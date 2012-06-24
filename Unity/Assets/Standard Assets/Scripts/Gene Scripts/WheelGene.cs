@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-	public class WheelGene : IGene
+	public class WheelGene : BaseGene
 	{
 		public enum WheelChromosomeType{
 		primitive,		// The primitive shape that'll be used to represent the wheel

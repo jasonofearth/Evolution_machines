@@ -36,16 +36,16 @@ using UnityEngine;
 			//Vector3 struturalScale = new Vector3((float)structuralDistance,(float)structuralDistance,(float)structuralDistance); 	
 		
 			// Determine the masses of the various structural components
-			double basemass = gene.getChromosome(CoreGene.CoreChromosomeType.structureMass);
-			motorAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorAllocation);
-			powerPackAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.powerPackAllocation);
+			double basemass = gene.getChromosome((int)CoreGene.CoreChromosomeType.structureMass);
+			motorAllocation = gene.getChromosome((int)CoreGene.CoreChromosomeType.motorAllocation);
+			powerPackAllocation = gene.getChromosome((int)CoreGene.CoreChromosomeType.powerPackAllocation);
 			double drivetotal = motorAllocation + powerPackAllocation;
 			double motormass = (motorAllocation / drivetotal) * drivepowerMass;
 			double powerpackmass = (powerPackAllocation / drivetotal) * drivepowerMass;
 			
 		
-			powerPackCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.powerPackCG),0.1f,0.1f,0.1f);
-			motorCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.motorCG),0.1f,0.1f,0.1f);
+			powerPackCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.powerPackCG),0.1f,0.1f,0.1f);
+			motorCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.motorCG),0.1f,0.1f,0.1f);
 			
 			
 			// If our motor or power pack are too light, then the joints will make them go crazy.  Don't let that happen:
@@ -93,16 +93,16 @@ using UnityEngine;
 	
 		private void ParseGenes(CoreGene gene)
 		{
-			drivepowerMass = gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10;
-			structureMass = gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10 + 1;
-			motorAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorAllocation);
+			drivepowerMass = gene.getChromosome((int)CoreGene.CoreChromosomeType.drivepowerMass) * 10;
+			structureMass = gene.getChromosome((int)CoreGene.CoreChromosomeType.drivepowerMass) * 10 + 1;
+			motorAllocation = gene.getChromosome((int)CoreGene.CoreChromosomeType.motorAllocation);
 			
-			motorSpeedAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorSpeedAllocation);
-			motorTorqueAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorTorqueAllocation);
+			motorSpeedAllocation = gene.getChromosome((int)CoreGene.CoreChromosomeType.motorSpeedAllocation);
+			motorTorqueAllocation = gene.getChromosome((int)CoreGene.CoreChromosomeType.motorTorqueAllocation);
 		
-			powerPackCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.powerPackCG));
-			motorCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.motorCG));
-			structureMassCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.structureMassCG));
+			powerPackCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.powerPackCG));
+			motorCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.motorCG));
+			structureMassCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.structureMassCG));
 		}
 	}
 
