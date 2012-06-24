@@ -103,6 +103,7 @@ using UnityEngine;
 			powerPackCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.powerPackCG));
 			motorCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.motorCG));
 			structureMassCG = Utilities.CreateVector3(gene.getChromosome((int)CoreGene.CoreChromosomeType.structureMassCG));
+
 		}
 	}
 

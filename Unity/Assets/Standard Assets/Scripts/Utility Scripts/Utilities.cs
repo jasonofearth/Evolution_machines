@@ -43,36 +43,40 @@ using UnityEngine;
 			long x_component = ((long)chromosomeVal >> 48) & 0x000000ff;
 			long y_component = ((long)chromosomeVal >> 32) & 0x000000ff;
 			long z_component = ((long)chromosomeVal >> 16) & 0x000000ff;
-		
+			
+			chromosomeVal = (chromosomeVal % 50);
 			float xval = (float)chromosomeVal * max_x;
-			chromosomeVal = (chromosomeVal * 10000) % 500;
+			chromosomeVal = (chromosomeVal * 10000) % 50;
 			float yval = (float)chromosomeVal * max_y;
-			chromosomeVal = (chromosomeVal * 10000) % 500;
+			chromosomeVal = (chromosomeVal * 10000) % 50;
 			float zval = (float)chromosomeVal * max_z;
-			vect.Set (xval,yval,zval);
+			
+			
+			vect.Set(xval,yval,zval);
 			return vect;
+		
 		}
 	
-	public static GameObject loadObject(String objType,Vector3 objpos,bool addscript)
-{
-	//Debug.Log("instantiating " + objType + "At position " + objpos);	
-	GameObject obj = (GameObject)Instantiate (Resources.Load(objType),objpos,Quaternion.identity);
-	//Debug.Log(obj);
-	obj.transform.position = objpos;
-	obj.AddComponent("collisionKiller");
-	if(addscript) {
-		Debug.Log("locating " + objType + " main script");	
-		var scriptName = objType+"MainScript";
-		Debug.Log("adding "+scriptName);	
-		//Debug.Log("adding collision killer script component");	
-		//obj.AddComponent("collisionKiller");
-		var thisScript = obj.GetComponent(scriptName);	
-		Debug.Log("passing in mainscript of ");
-		//thisScript.intialize(this);
-	}
-	//Debug.Log("returning cart base of type:" + obj.GetType());
-	return obj;
-}
+		public static GameObject loadObject(String objType,Vector3 objpos,bool addscript)
+		{
+			//Debug.Log("instantiating " + objType + "At position " + objpos);	
+			GameObject obj = (GameObject)Instantiate (Resources.Load(objType),objpos,Quaternion.identity);
+			//Debug.Log(obj);
+			obj.transform.position = objpos;
+			obj.AddComponent("collisionKiller");
+			if(addscript) {
+				Debug.Log("locating " + objType + " main script");	
+				var scriptName = objType+"MainScript";
+				Debug.Log("adding "+scriptName);	
+				//Debug.Log("adding collision killer script component");	
+				//obj.AddComponent("collisionKiller");
+				var thisScript = obj.GetComponent(scriptName);	
+				Debug.Log("passing in mainscript of ");
+				//thisScript.intialize(this);
+			}
+		//Debug.Log("returning cart base of type:" + obj.GetType());
+		return obj;
+		}
 	}
 
 

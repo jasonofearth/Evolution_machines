@@ -34,7 +34,17 @@ using UnityEngine;
 	
 		public Structure Express(Vector3 location,Structure parent)
 		{
-			return null;
+			Wheel wheelStructure = new Wheel();
+			if(!wheelStructure.GenerateFromGene(this,location,parent)) // if we weren't able to instantiate the wheel
+			{
+				return null; 											// then we're done.  But if we were...
+			}
+			foreach(IGene child in children) 							// then go through all the children
+			{
+				child.Express(location, wheelStructure); 			// and express them.
+			}
+			return wheelStructure;
+			//return null;
 		}
 	
 		public double getChromosome(WheelChromosomeType chromosome)
