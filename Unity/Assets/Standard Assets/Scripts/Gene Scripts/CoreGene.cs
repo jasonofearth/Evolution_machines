@@ -5,9 +5,17 @@ using UnityEngine;
 
 	public class CoreGene : IGene
 	{
-		public enum CoreChromosomeType{drivepowerMass,powerPackAllocation,
-		motorAllocation,motorSpeedAllocation,motorTorqueAllocation,structureMass,
-		powerPackCG,motorCG,structureMassCG};
+		public enum CoreChromosomeType{
+		drivepowerMass,
+		powerPackAllocation,
+		motorAllocation,
+		motorSpeedAllocation,
+		motorTorqueAllocation,
+		structureMass,
+		powerPackCG,
+		motorCG,
+		structureMassCG
+		};
 	
 		Dictionary<CoreChromosomeType,double> chromosomes;
 		
@@ -23,7 +31,11 @@ using UnityEngine;
 			{
 				chromosomes.Add(type,random.NextDouble());
 			}
-			//add 2 wheels just to get started
+			//add wheel manually just to get started
+			int numwheels = 4;
+			for(int i = 0; i< numwheels; i++) {
+				children.Add(new WheelGene());
+			}
 			
 		}
 		
@@ -39,8 +51,10 @@ using UnityEngine;
 			{
 				return null; 											// then we're done.  But if we were...
 			}
+			Debug.Log("Generating children of the core");
 			foreach(IGene child in children) 							// then go through all the children
 			{
+				//Debug.Log(location);
 				child.Express(location, creatureStructure); 			// and express them.
 			}
 			return creatureStructure;

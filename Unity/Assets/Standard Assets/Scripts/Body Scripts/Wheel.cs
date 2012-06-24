@@ -4,12 +4,29 @@ using UnityEngine;
 
 	public class Wheel : Structure
 	{
+		double wheelMass;
+		double wheelRadius;
+		double wheelThickness;
+		
+		Vector3 wheelCG;
+		
+	
+	
 		public Wheel ()
 		{
 		}
 		
-		public void GenerateFromGenome(WheelGene gene,Structure parent)
+		public bool GenerateFromGene(WheelGene gene,Vector3 parentLocation, Structure parent)
 		{
+			ParseGenes(gene);
+			
+			wheelCG = wheelCG+parentLocation;
+			Debug.Log("putting a wheel at: " + (wheelCG+parentLocation));
+			//wheelCG = parentLocation+new Vector3(1,2,3);
+			GameObject wheel = Utilities.loadObject("sphere",wheelCG,false);
+			wheel.rigidbody.mass = 1; //(float)wheelMass;
+			Debug.Log("wheel location" + wheel.transform.position);	
+		
 			//var wg:WheelGenome;
 			//if( genome.WheelGenomes.Length > genome.wheelPositions.Length) {
 //				var newWheelPositions = new Vector3[genome.WheelGenomes.Length];
@@ -32,6 +49,14 @@ using UnityEngine;
 //				joint.angularYZDrive.mode=JointDriveMode.Velocity;
 //				thiscart.components[i] = wheel;
 //			}
+			return true;
+		}
+		private void ParseGenes(WheelGene gene) {
+			wheelMass 		= gene.getChromosome(WheelGene.WheelChromosomeType.mass);
+			wheelRadius		= gene.getChromosome(WheelGene.WheelChromosomeType.radius);
+			wheelThickness	= gene.getChromosome(WheelGene.WheelChromosomeType.thickness);
+			double wheelCGDouble	= gene.getChromosome(WheelGene.WheelChromosomeType.position);
+			wheelCG = Utilities.CreateVector3(wheelCGDouble);
 		}
 	}
 

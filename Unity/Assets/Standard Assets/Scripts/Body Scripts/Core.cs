@@ -93,15 +93,15 @@ using UnityEngine;
 	
 		private void ParseGenes(CoreGene gene)
 		{
-			drivepowerMass = gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10;
-			structureMass = gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10 + 1;
+			drivepowerMass 	= gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10;
+			structureMass 	= gene.getChromosome(CoreGene.CoreChromosomeType.drivepowerMass) * 10 + 1;
 			motorAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorAllocation);
 			
-			motorSpeedAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorSpeedAllocation);
-			motorTorqueAllocation = gene.getChromosome(CoreGene.CoreChromosomeType.motorTorqueAllocation);
+			motorSpeedAllocation 	= gene.getChromosome(CoreGene.CoreChromosomeType.motorSpeedAllocation);
+			motorTorqueAllocation 	= gene.getChromosome(CoreGene.CoreChromosomeType.motorTorqueAllocation);
 		
-			powerPackCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.powerPackCG));
-			motorCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.motorCG));
+			powerPackCG 	= Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.powerPackCG));
+			motorCG 		= Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.motorCG));
 			structureMassCG = Utilities.CreateVector3(gene.getChromosome(CoreGene.CoreChromosomeType.structureMassCG));
 		}
 	}
